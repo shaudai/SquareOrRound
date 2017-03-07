@@ -3,11 +3,25 @@ package com.garfieldchou.squareorround;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.wearable.view.WatchViewStub;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-    private TextView mTextView;
+    public void showWatchShape (View view) {
+
+        String message = "Rectangular";
+
+        if (findViewById(R.id.round_layout) != null) {
+
+            message = "Round";
+
+        }
+
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +31,7 @@ public class MainActivity extends Activity {
         stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
-                mTextView = (TextView) stub.findViewById(R.id.text);
+
             }
         });
     }
